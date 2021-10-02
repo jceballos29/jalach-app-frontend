@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Switch, Route, NavLink, Redirect, useRouteMatch } from 'react-router-dom'
-// import '../css/Admin.css'
+import '../css/Admin.css'
 import Dashboard from './Admin/Dashboard';
 import Inventory from './Admin/Inventory';
 import Payroll from './Admin/Payroll';

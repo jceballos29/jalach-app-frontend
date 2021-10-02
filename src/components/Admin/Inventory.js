@@ -1,5 +1,5 @@
 import React from 'react'
-// import '../../css/Admin/Inventory.css'
+import '../../css/Admin/Inventory.css'
 import Product from './Inventory/Product';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import InventoryInfo from './Inventory/InventoryInfo';

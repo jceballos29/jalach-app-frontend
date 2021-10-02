@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-// import '../../css/Admin/Payroll.css'
+import '../../css/Admin/Payroll.css'
 import AddEmployee from './Payroll/AddEmployee'
 import Employee from './Payroll/Employee'
 

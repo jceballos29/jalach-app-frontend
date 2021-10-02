@@ -1,5 +1,5 @@
 import React from 'react'
-// import '../../css/Admin/Sales.css'
+import '../../css/Admin/Sales.css'
 import underConstruction from '../../img/under_construction.svg'
 
 function Sales() {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// import '../../css/Admin/Dashboard.css'
+import '../../css/Admin/Dashboard.css'
 
 const weekdays = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 const months = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIc'];

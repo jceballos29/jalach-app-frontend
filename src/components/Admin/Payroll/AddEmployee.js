@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// import '../../../css/Admin/Payroll/AddEmployee.css'
+import '../../../css/Admin/Payroll/AddEmployee.css'
 import { useForm } from 'react-hook-form';
 
 function AddEmployee({showAddEmployee, handleShow}) {

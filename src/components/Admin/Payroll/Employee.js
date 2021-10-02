@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-// import '../../../css/Admin/Payroll/Employee.css'
+import '../../../css/Admin/Payroll/Employee.css'
 import { FaUserEdit, FaUserMinus, FaUserCheck } from "react-icons/fa";
 import { useForm } from 'react-hook-form';
 

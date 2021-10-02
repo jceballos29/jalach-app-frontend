@@ -1,5 +1,5 @@
 import React from 'react';
-// import "../css/Register.css";
+import "../css/Register.css";
 import { FaAddressCard, FaUser } from 'react-icons/fa';
 import { IoMdBusiness} from 'react-icons/io';
 import { MdEmail, MdLocationOn, MdSmartphone } from 'react-icons/md'

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
-// import "../css/InitialSetup.css"
+import "../css/InitialSetup.css"
 import Categories from './InitialSetup/Categories'
 import OperationHours from './InitialSetup/OperationHours'
 import Roles from './InitialSetup/Roles'
