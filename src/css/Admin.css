@@ -1,0 +1,88 @@
+.Admin {
+    width: 1000px;
+    height: 750px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #BA181B;
+}
+
+.Admin ul {
+    width: 100%;
+    height: 35%;
+}
+
+.Admin li {
+    list-style: none;
+    width: 100%;
+    height: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.NavBarItem { 
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    color: #FFFFFF;
+    display: grid; 
+    grid-template-columns: 0.5fr 1fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      "Icon Name"; 
+  }
+
+.Icon { 
+    grid-area: Icon; 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Name { 
+    grid-area: Name; 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.NavBarItem:hover {
+    color: #660708;
+}
+
+.AdminNavBar {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.AdminContent {
+    width: 80%;
+    height: 100%;
+    background-color: #F5F3F4;
+    border-radius: 30px;
+    box-shadow: -1px 0 6px rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected {
+    color: #660708;
+}

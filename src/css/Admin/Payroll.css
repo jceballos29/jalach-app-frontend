@@ -1,0 +1,129 @@
+.Payroll {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.payrollContainer {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.employees {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.employeesTableTitle {
+    font-size: 54px;
+    width: 100%;
+    height: 15%;
+}
+
+.employeesTable {
+    width: 95%;
+    height: 85%;
+    display: grid; 
+    grid-template-columns: 1fr; 
+    grid-template-rows: 0.2fr 1.8fr; 
+    gap: 10px 0px; 
+    grid-template-areas: 
+      "employeesHeader"
+      "employeesContent"; 
+    padding: 0px 5px;
+}
+
+.employeesHeader {
+    display: grid; 
+    grid-template-columns: 2fr 2fr 2fr 2fr 4fr 2fr 2fr 2fr; 
+    grid-template-rows: 1fr; 
+    gap: 0px 0px; 
+    grid-template-areas: 
+      ". . . . . . . ."; 
+    grid-area: employeesHeader; 
+    align-items: center;
+    justify-items: center;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #B0BEC5;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+
+}
+
+.employeesContent {
+    width: 100%;
+    height: 100%;
+    padding: 2px 2px;
+    grid-area: employeesContent; 
+    overflow: auto;
+}
+
+.employeesContent::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.employeesContent::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.employeesContent::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+} 
+
+
+.employeesContent::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.employeesContent::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.contentTable::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}
+
+
+.payrollActions { 
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.payrollActions button {
+    width: 100%;
+    font-weight: bold;
+    width: 200px;
+    height: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    background-color: #F2D7D5;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+}
+
+.payrollActions button:hover {
+    background-color: #E6B0AA;
+}
+
+.payrollActions button:active {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.6) inset;
+
+} 

@@ -1,0 +1,178 @@
+.Dashboard {
+    width: 100%;
+    height: 100%;
+    border-radius: 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.4fr 1.6fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "DashboardHeader"
+      "DashboardContent";
+  }
+  
+  .DashboardHeader {
+    width: 95%;
+    height: 100%;
+    justify-self: center;
+    align-self: center;
+    display: grid;
+    grid-template-columns: 1.1fr 0.6fr 0.5fr;
+    grid-template-rows: 1fr;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      ". Clock Date";
+    grid-area: DashboardHeader;
+    padding: 20px;
+  }
+  
+  .Clock {
+      width: 100%;
+      height: 100%;
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Hour Journey"
+      "Hour Seconds";
+    grid-area: Clock;
+    border-right: 2px solid #5D6D7E;
+    padding-right: 10px;
+    color: #85929E;
+  }
+  
+  .Hour { 
+      grid-area: Hour; 
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    font-weight: bold;
+    font-size: 86px;    
+}
+  
+  .Journey { 
+      grid-area: Journey; 
+      width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    font-size: 26px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+    }
+  
+  .Seconds { 
+      grid-area: Seconds; 
+      width: 100%;
+      height: 100%;
+      font-size: 26px;
+      padding-top: 5px;
+      padding-left: 3px;
+
+    }
+  
+  .Date {
+      width: 100%;
+      height: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "Weekday Weekday Weekday"
+      "Month Day Year";
+    grid-area: Date;
+    color: #85929E;
+    margin-right: 20px;
+  }
+  
+  .Weekday { 
+      grid-area: Weekday; 
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 15px;
+      font-weight: bold;
+      font-size: 42px;
+    }
+  
+  .Month { 
+      grid-area: Month; 
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        font-size: 24px;
+        padding-left: 15px;
+
+    }
+  
+  .Day { 
+      grid-area: Day; 
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    font-size: 24px;
+
+    }
+  
+  .Year { 
+      grid-area: Year; 
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+    font-size: 24px;
+    font-weight: bold;
+    
+    }  
+
+    .DashboardContent {
+      width: 100%;
+      height: 100%;
+      grid-area: DashboardContent; 
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      gap: 0px 0px;
+      grid-auto-flow: row;
+      grid-template-areas:
+        "dashboardContainer";
+      justify-self: center;
+      align-self: center;
+    }
+    
+    .dashboardContainer {
+      display: grid; 
+      grid-template-columns: 1fr 1fr 1fr 1fr; 
+      grid-template-rows: 1fr 1fr 1fr 1fr; 
+      gap: 10px 10px; 
+      grid-template-areas: 
+        "abstractGraph abstractGraph payrollInfo payrollInfo"
+        "abstractGraph abstractGraph payrollInfo payrollInfo"
+        "payrollGraph payrollGraph inventoryInfo inventoryInfo"
+        "inventoryGraph inventoryGraph inventoryInfo inventoryInfo"; 
+      justify-self: center; 
+      grid-area: dashboardContainer; 
+      width: 90%; 
+      height: 90%; 
+      margin-top: 15px;
+    }
+    .payrollInfo { grid-area: payrollInfo; }
+    .abstractGraph { grid-area: abstractGraph; }
+    .payrollGraph { grid-area: payrollGraph; }
+    .inventoryGraph { grid-area: inventoryGraph; }
+    .inventoryInfo { grid-area: inventoryInfo; }
+    .box {
+      border-radius: 10px;
+      box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+      background-color: #ECEFF1;
+    }
