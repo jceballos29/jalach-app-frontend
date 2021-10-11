@@ -19,7 +19,7 @@ function Categories({categoriesAmount}) {
         reset();
     }
 
-    const categoriesList = categories.map((element,index) => (<Category key={element.categoryName} id={index + 1} code={element.categoryCode} name={element.categoryName}/>))
+    const categoriesList = categories.map((element,index) => (<Category key={element.categoryName}  code={element.categoryCode} name={element.categoryName}/>))
     
 
     return (

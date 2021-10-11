@@ -3,20 +3,31 @@ import "../css/Login.css"
 import { useForm } from 'react-hook-form';
 import { FaUser } from 'react-icons/fa';
 import { RiLockPasswordFill } from "react-icons/ri";
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginCompany } from '../actions/auth.action'
+import { Redirect } from 'react-router-dom';
 
 
 function Login() {
 
-    const history = useHistory();
-    
+    const dispatch = useDispatch();
+    const { isLoggedIn } = useSelector((state) => state.auth);
     const { register, handleSubmit, reset } = useForm();
     // TODO: Realzar mensaje de error al user o password incorrectos
     // formState: { errors },
     const onSubmit = data => {
-        console.log(data);
-        history.push("/start-setup")
-        reset();
+        try {
+            dispatch(loginCompany(data))
+            window.location.reload()            
+            reset();
+        } catch (error) {
+            
+        }
+    }
+
+    if(isLoggedIn){
+        return <Redirect to= "/company"/>
     }
 
     return (

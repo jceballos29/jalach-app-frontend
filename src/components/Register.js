@@ -6,19 +6,31 @@ import { MdEmail, MdLocationOn, MdSmartphone } from 'react-icons/md'
 import { RiLockPasswordFill } from "react-icons/ri";
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {registerCompany} from '../actions/auth.action'
+
 
 function Register() {
 
+    const dispatch = useDispatch();
     const history = useHistory();
     const { register, handleSubmit, reset } = useForm();
-    //TODO: Realizar un mensaje de error por los campos no ingresados
-    // formState: { errors },
+    
+
     const onSubmit = data => {
-        console.log(data);
-        reset();
-        //TODO: Realizar aviso de registro existoso
-        history.push('/login');
+        try {
+            dispatch(registerCompany(data))
+            reset();
+            //TODO: Realizar aviso de registro existoso
+            setTimeout(() => {
+                history.push('/login');
+            }, 1000);
+        } catch (error) {
+            reset();
+        }
     }
+
+
 
     return (
         <div className="Register">
@@ -40,7 +52,7 @@ function Register() {
                                 </div>
                                 <div className="formInput">
                                     <IoMdBusiness size="20px"/>
-                                    <input type="text" placeholder="Razón Socila" {...register("businessName", {required: true})} />
+                                    <input type="text" placeholder="Razón Social" {...register("business_name", {required: true})} />
                                 </div>
                                 
                             </div>    
@@ -68,10 +80,6 @@ function Register() {
                         <div className="formGroup">
                             <h3>Información de ubicación</h3>
                             <div className="inputGroup">
-                                {/* <div className="formInput">
-                                    <MdLocationOn size="20px"/>
-                                    <input type="text" placeholder="Dirección" {...register("address", {required: true})} />
-                                </div> */}
                                 <div className="formInput">
                                     <MdLocationOn size="20px"/>
                                     <input type="text" placeholder="País" {...register("country", {required: true})} />

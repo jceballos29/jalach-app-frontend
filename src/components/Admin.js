@@ -7,9 +7,18 @@ import Payroll from './Admin/Payroll';
 import Sales from './Admin/Sales';
 import { MdDashboard, MdAssignment, MdStoreMallDirectory, MdGroupWork } from 'react-icons/md'
 
+import { useDispatch, useSelector } from 'react-redux';
+import { logoutCompany } from '../actions/auth.action'
+
+
+
 const date = new Date();
 
 function Admin() {
+
+    const dispatch = useDispatch();
+    const { isLoggedIn, company } = useSelector((state) => state.auth);
+
     const [dateTime, setDateTime] = useState({
         hours: date.getHours(),
         minutes: date.getMinutes(),
@@ -30,6 +39,14 @@ function Admin() {
 
 
     const {path, url} = useRouteMatch();
+
+    if(!isLoggedIn) {
+        return <Redirect to="/login"/>
+    }
+
+    if(company.first_time) {
+        return <Redirect to="/start-setup"/>
+    }
     
     return (
         <div className="Admin">
@@ -69,6 +86,10 @@ function Admin() {
                     </li>
                     
                 </ul>
+                <button onClick={() => {
+                    dispatch(logoutCompany());
+                    window.location.reload();
+                }}>Log Out</button>
             </div>
             <div className="AdminContent">
             <Switch>
