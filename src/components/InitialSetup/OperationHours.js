@@ -1,14 +1,21 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { businessHours } from '../../actions/auth.action';
 
-function OperationHours({hourly}) {
+function OperationHours({disable}) {
 
-    const [disabled, setDisabled] = useState(false)
+    const dispatch = useDispatch();
+    const { company } = useSelector((state) => state.auth);
+    const [disabled, setDisabled] = useState(disable)
     const { register, handleSubmit} = useForm();
     const onSubmit = data => {
-        console.log(data);
-        hourly(true)
-        setDisabled(true)
+        try {
+            dispatch(businessHours(company.rut, data))
+            setDisabled(true)
+        } catch (error) {
+            throw error;   
+        }
     }
 
     return (
@@ -18,11 +25,11 @@ function OperationHours({hourly}) {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <label>
                     <b>Horario de apertura:</b>
-                    <input type="time" placeholder="openingTime" {...register("openingTime", {required: true})} />
+                    <input type="time" placeholder="openingTime" {...register("opening_time", {required: true})} />
                 </label>
                 <label>
                     <b>Horario de cierre:</b>
-                    <input type="time" placeholder="closingTime" {...register("closingTime", {required: true})} />
+                    <input type="time" placeholder="closingTime" {...register("closing_time", {required: true})} />
                 </label>
 
                 <input type="submit" value="Guardar" disabled={disabled}/>

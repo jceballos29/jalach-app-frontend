@@ -10,6 +10,9 @@ import { MdDashboard, MdAssignment, MdStoreMallDirectory, MdGroupWork } from 're
 import { useDispatch, useSelector } from 'react-redux';
 import { logoutCompany } from '../actions/auth.action'
 
+import {getRoles, logoutRoles} from '../actions/role.actions'
+import { getCategories, logoutCategories } from '../actions/category.actions';
+
 
 
 const date = new Date();
@@ -17,7 +20,7 @@ const date = new Date();
 function Admin() {
 
     const dispatch = useDispatch();
-    const { isLoggedIn, company } = useSelector((state) => state.auth);
+    const { company } = useSelector((state) => state.auth);
 
     const [dateTime, setDateTime] = useState({
         hours: date.getHours(),
@@ -37,12 +40,12 @@ function Admin() {
         return () => clearInterval(timer)
     }, []);
 
+    useEffect(() => {
+        dispatch(getRoles(company.rut))
+        dispatch(getCategories(company.rut))
+    }, [company, dispatch])
 
     const {path, url} = useRouteMatch();
-
-    if(!isLoggedIn) {
-        return <Redirect to="/login"/>
-    }
 
     if(company.first_time) {
         return <Redirect to="/start-setup"/>
@@ -88,6 +91,8 @@ function Admin() {
                 </ul>
                 <button onClick={() => {
                     dispatch(logoutCompany());
+                    dispatch(logoutRoles());
+                    dispatch(logoutCategories());
                     window.location.reload();
                 }}>Log Out</button>
             </div>

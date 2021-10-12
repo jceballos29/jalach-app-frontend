@@ -3,7 +3,11 @@ import {
     REGISTER_FAIL,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
-    LOGOUT
+    LOGOUT,
+    SET_BUSINESS_HOURS_SUCCESS,
+    SET_BUSINESS_HOURS_FAIL,
+    NOT_FIRST_TIME_SUCCESS,
+    NOT_FIRST_TIME_FAIL
 } from '../actions/types.js'
 
 const company = JSON.parse(localStorage.getItem("company"));
@@ -45,7 +49,24 @@ const authReducer = (state = initialState, action) => {
                 isLoggedIn: false,
                 company: null,
             };
-    
+        case SET_BUSINESS_HOURS_SUCCESS:
+            return {
+                ...state,
+                company: payload.company
+            }
+        case SET_BUSINESS_HOURS_FAIL:
+            return {
+                ...state
+            }
+        case NOT_FIRST_TIME_SUCCESS:
+            return {
+                ...state,
+                company: payload.company
+            }
+        case NOT_FIRST_TIME_FAIL:
+            return {
+                ...state
+            }
         default:
             return state
     }

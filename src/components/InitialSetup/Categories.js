@@ -1,26 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import Category from './Category';
+import { useDispatch, useSelector } from 'react-redux';
+import { addCategory } from "../../actions/category.actions"
 
-function Categories({categoriesAmount}) {
+function Categories({rut}) {
 
-    const [categories, setCategories] = useState([]);
-
-    const addCategory = (category) => {
-        let categoriesList = categories;
-        categoriesList.push(category);
-        setCategories(categoriesList)
-    }
+    const dispatch = useDispatch();
+    const {categories} = useSelector((state) => state.categories);
+    const [categoriesList, setCategoriesList] = useState()
 
     const { register, handleSubmit, reset} = useForm();
     const onSubmit = data => {
-        addCategory(data);
-        categoriesAmount(categories.length)
+        data = Object.assign({business_rut: rut}, data)
+        dispatch(addCategory(rut,data));
         reset();
     }
 
-    const categoriesList = categories.map((element,index) => (<Category key={element.categoryName}  code={element.categoryCode} name={element.categoryName}/>))
-    
+    useEffect(() => {
+        if(categories){
+            setCategoriesList(
+                categories.map((category) => (<Category key={category.code}  code={category.code} name={category.name} rut={rut}/>))
+            );
+        }
+    }, [categories, rut])
 
     return (
         <div className="Categories">
@@ -28,8 +31,8 @@ function Categories({categoriesAmount}) {
                 <h2>Categorías</h2>
                 <p>Esto nos va a servir para organizar de manera mas eficiente tu inventario.</p>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input type="text" placeholder="Nombre" {...register("categoryName", {required: true})} />
-                    <input type="text" placeholder="Código" {...register("categoryCode", {required: true})} />
+                    <input type="text" placeholder="Nombre" {...register("name", {required: true})} />
+                    <input type="text" placeholder="Código" {...register("code", {required: true})} />
 
                     <input type="submit" />
                 </form>

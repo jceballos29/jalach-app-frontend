@@ -1,36 +1,36 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import RoleTag from './RoleTag';
+import { useDispatch, useSelector } from 'react-redux';
+import {  addRole } from '../../actions/role.actions'
 
-function Roles({roleAmount}) {
+function Roles({rut}) {
 
-    const [roles, setRoles] = useState([])
-
-    const addRole = (role) => {
-        let rolesList = roles
-        rolesList.push(role)
-        setRoles(rolesList)
-    }
-
-    const deleteRole = (id) => {
-        //TODO: Crear la función para eliminar elementos
-        console.log(roles[id]);
-    }
+    const dispatch = useDispatch();
+    const {roles} = useSelector((state) => state.roles);
+    const [rolesList, setRolesList] = useState()
 
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        addRole(data);
-        roleAmount(roles.length);
+        data = Object.assign({business_rut: rut}, data)
+        dispatch(addRole(rut, data));
         reset();
     }
     
     const rolesColors = ["#F48FB1","#9575CD","#64B5F6","#4DB6AC","#AED581","#FFD54F","#FF8A65","#A1887F"];
-    const rolesColorsList = rolesColors.map(i => (
-        <option key={i} value={i} style={{backgroundColor: `${i}`}}>
-            {i}
+    const rolesColorsList = rolesColors.map((color,index) => (
+        <option key={index} value={color} style={{backgroundColor: `${color}`}}>
+            {color}
         </option>
     ));
-    const rolesList  = roles.map((element, index) => (<RoleTag key={element.roleName} name={element.roleName} color={element.roleColor} id={index} deleteRole={deleteRole}/>))
+
+    useEffect(() => {
+        if(roles){
+            setRolesList(
+                roles.map((role) => (<RoleTag key={role.id} name={role.role} color={role.color} id={role.id} rut={rut}/>))
+            )
+        }
+    }, [roles, rut])
     
     return (
         <div className="Roles">
@@ -38,16 +38,18 @@ function Roles({roleAmount}) {
                 <h2>Roles</h2>
                 <p>Esto nos ayudará a identificar a tus empleados y sus funciones.</p>
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <input type="text" placeholder="Nombre" {...register("roleName", {required: true})} />
-                    <select {...register("roleColor", { required: true })}>
+                    <input type="text" placeholder="Nombre" {...register("role", {required: true})} />
+                    <select {...register("color", { required: true })}>
                         {rolesColorsList}
                     </select>
-                    <input type="text" placeholder="Pago por Hora" {...register("roleHourly", {required: true})} />
+                    <input type="text" placeholder="Pago por Hora" {...register("hourly", {required: true})} />
 
                     <input type="submit" value="Agregar"/>
                 </form>
                 <div className="rolesContainer">
-                    {rolesList}
+                {
+                    rolesList
+                }
                 </div>
             </div>
         </div>

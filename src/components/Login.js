@@ -19,7 +19,7 @@ function Login() {
     const onSubmit = data => {
         try {
             dispatch(loginCompany(data))
-            window.location.reload()            
+            // window.location.reload()            
             reset();
         } catch (error) {
             
