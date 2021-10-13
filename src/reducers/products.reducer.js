@@ -1,32 +1,33 @@
 import {
-    ROLES_SUCCESS,
-    ROLES_FAIL,
+    PRODUCT_SUCCESS,
+    PRODUCT_FAIL,
     LOGOUT
+
 } from '../actions/types.js';
 
-const initialState = {roles: null};
+const initialState = {products: null}
 
-const rolesReducer = (state = initialState, action) => {
+const productsReducer = (state = initialState, action) => {
     const {type, payload} = action;
 
     switch (type) {
-        case ROLES_SUCCESS:
+        case PRODUCT_SUCCESS:
             return {
                 ...state,
-                roles: payload.roles
+                products: payload.products
             };
-        case ROLES_FAIL:
+        case PRODUCT_FAIL:
             return {
                 ...state
             }
         case LOGOUT:
             return{
                 ...state,
-                roles: null
+                products: null
             }
         default:
             return state;
     }
 }
 
-export default rolesReducer;
+export default productsReducer;

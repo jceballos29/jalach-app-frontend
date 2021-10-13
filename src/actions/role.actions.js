@@ -58,8 +58,7 @@ export const deleteRole = (rut, id) => async (dispatch) => {
 }
 
 export const logoutRoles = () => (dispatch) => {
-    RoleService.logout();
-
+    
     dispatch({
         type: LOGOUT,
     });

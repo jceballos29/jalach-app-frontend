@@ -9,8 +9,6 @@ const getRolesofCompany = async(rut) => {
         url: `/roles/${rut}`
     });
 
-    localStorage.setItem("roles", JSON.stringify(response.data));
-
     return response.data;
 }
 
@@ -31,15 +29,10 @@ const deleteRole = async(id) => {
     })
 }
 
-const logout = () => {
-    localStorage.removeItem("roles");
-};
-
 const RoleService = {
     getRolesofCompany,
     addRole,
-    deleteRole,
-    logout
+    deleteRole
 }
 
 export default RoleService;

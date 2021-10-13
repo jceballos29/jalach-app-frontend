@@ -29,8 +29,6 @@ function InitialSetup() {
                 <Categories rut={company.rut}/>
                 <div className="setupButtons">
                     <button onClick={() => {
-                        //TODO: Realizar validación de campos
-                        // if(categories > 0 && roles > 0 && hourly){
                             const checkHourly = company.opening_time !== null && company.closing_time !== null;
                             const checkRoles = roles.length>0;
                             const checkCategories = categories.length>0;
@@ -38,8 +36,6 @@ function InitialSetup() {
                                 dispatch(notFirstTime(company.rut))
                             }
                             history.push('/company')
-                        // }
-                        //TODO: Generar anuncio de elementos vacíos
                     }}>
                         Comenzar
                     </button>

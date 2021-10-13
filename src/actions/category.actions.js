@@ -59,7 +59,6 @@ export const deleteCategory = (rut, id) => async (dispatch) => {
 
 
 export const logoutCategories = () => (dispatch) => {
-    CategoryService.logout();
 
     dispatch({
         type: LOGOUT,

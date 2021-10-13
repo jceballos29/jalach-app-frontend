@@ -1,17 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form';
 import {useHistory} from 'react-router-dom'
+
+import { useDispatch, useSelector } from 'react-redux';
+import { registerProduct } from '../../../actions/product.actions';
 
 function ProductRegister({path}) {
 
     const history = useHistory();
+    const dispatch = useDispatch();
+    const {categories} = useSelector((state) => state.categories);
+    const {company} = useSelector((state) => state.auth);
+
+    const [categorieList, setCategorieList] = useState();
 
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = data => {
-        console.log(data);
+        data = Object.assign({business_rut: company.rut}, data)
+        dispatch(registerProduct(company.rut, data))
         reset();
         history.push(`${path}`)
     }
+
+    useEffect(() => {
+        if(categories){
+            setCategorieList(
+                categories.map( category => (<option key={category.code} value={category.code}>{category.name}</option>))
+            );
+        }
+    }, [categories])
 
     return (
 
@@ -25,12 +42,11 @@ function ProductRegister({path}) {
                 <input type="text" placeholder="Nombre" {...register("name", {required: true})} />
             </div>    
             <div className="amount">
-                <input type="number" placeholder="Cantidad" min={1} defaultValue={1} {...register("amount", {required: true})} />
+                <input type="number" placeholder="Cantidad" min={1} defaultValue={1} {...register("stock", {required: true})} />
             </div>
             <div className="category">
-                <select {...register("category", { required: true })}>
-                    <option value="Cervezas">Cervezas</option>
-                    <option value="Pasabocas">Pasabocas</option>
+                <select {...register("category_code", { required: true })}>
+                    {categorieList}
                 </select>
             </div>
             <div className="cost">
@@ -43,6 +59,12 @@ function ProductRegister({path}) {
             <div className="addProduct">
                 <input type="submit" value="Agregar"/>    
             </div>    
+            <div className='cancel'>
+                <button onClick={()=>{
+                    reset();
+                    history.push(`${path}`);
+                }}>Cancelar</button>
+            </div>
         </form>
 
     )

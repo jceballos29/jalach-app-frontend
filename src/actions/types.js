@@ -12,3 +12,6 @@ export const ROLES_FAIL = "ROLES_FAIL";
 export const CATEGORY_SUCCESS = "CATEGORY_SUCCESS";
 export const CATEGORY_FAIL = "CATEGORY_FAIL";
 
+export const PRODUCT_SUCCESS = "PRODUCT_SUCCESS"
+export const PRODUCT_FAIL = "PRODUCT_FAIL"
+

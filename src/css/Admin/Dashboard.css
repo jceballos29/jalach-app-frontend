@@ -158,8 +158,8 @@
       grid-template-areas: 
         "abstractGraph abstractGraph payrollInfo payrollInfo"
         "abstractGraph abstractGraph payrollInfo payrollInfo"
-        "payrollGraph payrollGraph inventoryInfo inventoryInfo"
-        "inventoryGraph inventoryGraph inventoryInfo inventoryInfo"; 
+        "payrollGraph payrollGraph companyInfo companyInfo"
+        "inventoryGraph inventoryGraph companyInfo companyInfo"; 
       justify-self: center; 
       grid-area: dashboardContainer; 
       width: 90%; 
@@ -169,10 +169,188 @@
     .payrollInfo { grid-area: payrollInfo; }
     .abstractGraph { grid-area: abstractGraph; }
     .payrollGraph { grid-area: payrollGraph; }
-    .inventoryGraph { grid-area: inventoryGraph; }
-    .inventoryInfo { grid-area: inventoryInfo; }
+    .inventoryGraph { grid-area: inventoryGraph; 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      grid-template-rows: 0.5fr 1.5fr; 
+      gap: 0px 0px; 
+      grid-template-areas: 
+        "IGHeader"
+        "IGBody"; 
+      width: 355px; 
+      height: 126px; 
+    }
+    .IGHeader {
+      display: grid; 
+      grid-template-columns: 1fr 1fr 1fr; 
+      grid-template-rows: 1fr; 
+      gap: 0px 0px; 
+      grid-template-areas: 
+        ". . ."; 
+      grid-area: IGHeader; 
+      color: #263238;
+      background-color: #E57373 ;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding: 0px 5%;
+      align-items: center;
+      justify-items: center;
+      font-weight: bold;
+    }
+    .IGBody {
+      display: grid; 
+      grid-template-columns: 1fr; 
+      grid-template-rows: 1fr 1fr 1fr; 
+      gap: 0px 0px; 
+      justify-self: center; 
+      grid-area: IGBody; 
+      width: 90%; 
+      overflow-y: auto;
+    }
+
+
+
+    .IGBody::-webkit-scrollbar {
+      -webkit-appearance: none;
+  }
+  
+  .IGBody::-webkit-scrollbar:vertical {
+      width:10px;
+  }
+  
+  .IGBody::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+      display: none;
+  } 
+  
+  
+  .IGBody::-webkit-scrollbar:horizontal {
+      height: 10px;
+  }
+  
+  .IGBody::-webkit-scrollbar-thumb {
+      background-color: #797979;
+      border-radius: 20px;
+      border: 2px solid #f1f2f3;
+  }
+  
+  .IGBody::-webkit-scrollbar-track {
+      border-radius: 10px;  
+  }
+
+
+
+    .IGItem {
+      display: grid; 
+      grid-template-columns: 1fr 1fr 1fr; 
+      grid-template-rows: 1fr; 
+      align-items: center;
+      justify-items: center;
+    }
+
+    .companyInfo { 
+      grid-area: companyInfo; 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      grid-template-rows: 0.6fr 2fr 0.4fr; 
+      gap: 5px 5px; 
+      grid-template-areas: 
+        "companyName"
+        "companyBody"
+        "companyButton"; 
+        
+
+    }
+    .companyName { 
+      grid-area: companyName; 
+      width: 100%;
+      height: 100%;
+      justify-self: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      color: #263238;
+      background-color: #E57373 ;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    .companyBody {
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      grid-template-rows: 1fr; 
+      gap: 0px 0px; 
+      grid-template-areas: 
+        "headers content"; 
+      grid-area: companyBody; 
+    }
+    .headers {
+      display: grid; 
+      grid-auto-columns: 1fr; 
+      grid-template-columns: 1fr; 
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+      gap: 0px 0px; 
+      padding-right: 10px;
+      grid-template-areas: 
+        "."
+        "."
+        "."
+        "."
+        "."
+        "."
+        "."; 
+      grid-area: headers; 
+      font-weight: bold;
+      justify-items: end;
+      align-content: center;
+      font-size: 14px;
+      color: #263238;
+
+    }
+    .content {
+      display: grid; 
+      grid-template-columns: 1fr; 
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr; 
+      gap: 0px 0px; 
+      grid-template-areas: 
+        "."
+        "."
+        "."
+        "."
+        "."
+        "."
+        "."; 
+      grid-area: content; 
+      padding-left: 10px;
+      align-content: center;
+      font-size: 14px;
+
+    }
+    .companyButton { 
+      grid-area: companyButton; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .companyButton button {
+      width: 40%;
+      text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 2px;
+      border: none;
+      background-color: #E0E0E0;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .companyButton button:active {
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.5) inset;
+
+    }
+
     .box {
       border-radius: 10px;
       box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-      background-color: #ECEFF1;
+      background-color: #fff3f4;
     }

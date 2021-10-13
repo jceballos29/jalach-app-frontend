@@ -9,8 +9,6 @@ const getCategoryOfCompany = async(rut) => {
         url: `/category/${rut}`
     });
 
-    localStorage.setItem("categories", JSON.stringify(response.data));
-
     return response.data;
 }
 
@@ -31,15 +29,12 @@ const deleteCategory = async(id) => {
     })
 }
 
-const logout = () => {
-    localStorage.removeItem("categories");
-};
+
 
 const CategoryService = {
     getCategoryOfCompany,
     addCategory,
-    deleteCategory,
-    logout
+    deleteCategory
 }
 
 export default CategoryService;
