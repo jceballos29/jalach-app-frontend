@@ -14,12 +14,11 @@ function Login() {
     const dispatch = useDispatch();
     const { isLoggedIn } = useSelector((state) => state.auth);
     const { register, handleSubmit, reset } = useForm();
-    // TODO: Realzar mensaje de error al user o password incorrectos
-    // formState: { errors },
+
     const onSubmit = data => {
         try {
             dispatch(loginCompany(data))
-            // window.location.reload()            
+   
             reset();
         } catch (error) {
             

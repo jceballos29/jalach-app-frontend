@@ -55,7 +55,6 @@ function Product({product, rut}) {
                 </div>
                 
                 <RiCloseCircleFill style={{cursor:'pointer', color:'#D32F2F'}} size="20px" onClick={() => {
-                    //TODO: Crear función elimar producto
                     dispatch(deleteProduct(rut, product.code))
                 }}/>
             </div>

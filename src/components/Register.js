@@ -21,7 +21,6 @@ function Register() {
         try {
             dispatch(registerCompany(data))
             reset();
-            //TODO: Realizar aviso de registro existoso
             setTimeout(() => {
                 history.push('/login');
             }, 1000);
