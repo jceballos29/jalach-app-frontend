@@ -1,24 +1,29 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../../css/Admin/Payroll.css'
 import AddEmployee from './Payroll/AddEmployee'
 import Employee from './Payroll/Employee'
 
-const employee = {
-    firstname: "Juan",
-    lastname: "Ceballos",
-    username: "jceballos",
-    role: "Cajero",
-    email: "juanceballos@mail.com",
-    phone: "3146910642",
-    weeklyHours: 48
-}
+import { useSelector } from 'react-redux';
+
+
 
 function Payroll() {
 
+    const { employees } = useSelector((state) => state.employees);
+    const { company } = useSelector((state) => state.auth);
+    const [employeesList, setEmployeesList] = useState()
     const [showAddEmployee, setShowAddEmployee] = useState(false)
     const handleShow = (data) => {
         setShowAddEmployee(data)
     }
+
+    useEffect(() => {
+        if(employees && company){
+            setEmployeesList(
+                employees.map(employee => <Employee key={employee.id} employee={employee} rut={company.rut}/>)
+            );
+        }
+    }, [employees, company])
 
     return (
         <div className="Payroll">
@@ -37,7 +42,7 @@ function Payroll() {
                             <span>Acciones</span>
                         </div>
                         <div className="employeesContent">
-                            <Employee employee={employee}/>
+                            {employeesList}
                         </div>
                     </div>
                 </div>
@@ -47,7 +52,7 @@ function Payroll() {
                     }}>Agreagar Empleado</button>
                 </div>
             </div>
-        <AddEmployee showAddEmployee={showAddEmployee} handleShow={handleShow}/>
+        <AddEmployee showAddEmployee={showAddEmployee} handleShow={handleShow} rut={company.rut}/>
         </div>
     )
 }

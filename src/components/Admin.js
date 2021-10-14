@@ -14,6 +14,7 @@ import {getRoles, logoutRoles} from '../actions/role.actions'
 import { getCategories, logoutCategories } from '../actions/category.actions';
 import { getCompanyProducts, logoutProducts } from '../actions/product.actions';
 import { calculateBudgestCategories, calculateSales, calculateTotalCost } from '../actions/budgets.action';
+import { getEmployeesOfCompany, logoutEmployees } from '../actions/employee.action';
 
 const date = new Date();
 
@@ -21,7 +22,7 @@ function Admin() {
 
     const dispatch = useDispatch();
     const { company } = useSelector((state) => state.auth);
-    const { roles } = useSelector((state) => state.roles);
+    // const { roles } = useSelector((state) => state.roles);
     const { categories } = useSelector((state) => state.categories);
     const { products } = useSelector((state) => state.products); 
     
@@ -61,6 +62,7 @@ function Admin() {
         dispatch(getRoles(company.rut))
         dispatch(getCategories(company.rut))
         dispatch(getCompanyProducts(company.rut))
+        dispatch(getEmployeesOfCompany(company.rut))
     }, [company, dispatch])
 
     const {path, url} = useRouteMatch();
@@ -115,8 +117,8 @@ function Admin() {
                         dispatch(logoutCompany());
                         dispatch(logoutRoles());
                         dispatch(logoutCategories());
-                        dispatch(logoutProducts())
-                        
+                        dispatch(logoutProducts());
+                        dispatch(logoutEmployees());
                     }}>Cerrar Sesión</button>
                 </div>
                 

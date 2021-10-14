@@ -27,6 +27,14 @@ const budgetsReducer = (state = initialState, action) => {
                 budgetsCategories: payload.budgetsCategories
             }
 
+        case 'LOGOUT':
+            return {
+                ...state,
+                totalCost: 0,
+                sales: 0,
+                budgetsCategories: null
+            }
+
         default:
             return state;
     }

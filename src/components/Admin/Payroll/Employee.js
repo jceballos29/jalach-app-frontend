@@ -2,9 +2,17 @@ import React, { useEffect, useState } from 'react'
 import '../../../css/Admin/Payroll/Employee.css'
 import { FaUserEdit, FaUserMinus, FaUserCheck } from "react-icons/fa";
 import { useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateEmployee, dismissEmployee } from '../../../actions/employee.action';
 
-function Employee({employee}) {
+
+
+function Employee({employee, rut}) {
     
+    const dispatch = useDispatch();
+    const { roles } = useSelector((state) => state.roles);
+    const [role, setRole] = useState()
+    const [rolesList, setRolesList] = useState()
     const [update, setUpdate] = useState(false)
     const [display, setDisplay] = useState({
         edit: "block",
@@ -13,11 +21,25 @@ function Employee({employee}) {
 
     const { register, handleSubmit, reset} = useForm();
     const onSubmit = data => {
-        console.log(data);
-        
+        if(data.role_id === '') data.role_id = employee.role_id
+        data.id = employee.id;
+        data.firstname=employee.firstname;
+        data.lastname = employee.lastname
+        data.business_rut = rut
+        data.username = employee.username;
+        dispatch(updateEmployee(rut, employee.id, data))
         reset();
     }
 
+    useEffect(() => {
+        if(roles && employee){
+            const result = roles.find(role => role.id === employee.role_id);
+            setRole(result.role);
+            setRolesList(
+                roles.map(role => (<option key={role.id} value={role.id}>{role.role}</option>))
+            );
+        }
+    }, [roles, employee])
 
     useEffect(() => {
         setUpdate(false)
@@ -39,20 +61,16 @@ function Employee({employee}) {
 
     return (
         <form className="Employee" onSubmit={handleSubmit(onSubmit)}>
-            <div className="employeeItem" >
-                <span style={{display:`${display.edit}`}}>{employee.firstname}</span>
-                <input style={{display:`${display.save}`}} type="text" placeholder={employee.firstname} defaultValue={employee.firstname} {...register("firstname")}/>
-            </div>
-            <div className="employeeItem">
-                <span style={{display:`${display.edit}`}} >{employee.lastname}</span>
-                <input style={{display:`${display.save}`}} type="text" placeholder={employee.lastname} defaultValue={employee.lastname} {...register("lastname")} />
-            </div>
+
+            <span style={{display:`block`}}>{employee.firstname}</span>
+
+            <span style={{display:`block`}} >{employee.lastname}</span>
+
             <span style={{display:"block"}}>{employee.username}</span>
             <div className="employeeItem">
-                <span style={{display:`${display.edit}`}} >{employee.role}</span>
-                    <select style={{display:`${display.save}`}} {...register("role")} defaultValue={employee.role}>
-                        <option value="Mesero">Mesero</option>
-                        <option value="Cajero">Cajero</option>
+                <span style={{display:`${display.edit}`}} >{role}</span>
+                    <select style={{display:`${display.save}`}} {...register("role_id")} defaultValue={employee.role_id}>
+                        {rolesList}
                     </select>
             </div>
             <div className="employeeItem">
@@ -65,8 +83,8 @@ function Employee({employee}) {
                 <input style={{display:`${display.save}`}} type="tel" placeholder={employee.phone} defaultValue={employee.phone} {...register("phone")} />
             </div>
             <div className="employeeItem">
-                <span style={{display:`${display.edit}`}}>{employee.weeklyHours}</span>
-                <input style={{display:`${display.save}`}} type="number" placeholder={employee.weeklyHours} defaultValue={employee.weeklyHours} {...register("weekly_hours")} />
+                <span style={{display:`${display.edit}`}}>{employee.weekly_hours}</span>
+                <input style={{display:`${display.save}`}} type="number" placeholder={employee.weekly_hours} defaultValue={employee.weekly_hours} {...register("weekly_hours")} />
             </div>
             <div className="employeeOptions">
                     <div className="updateEmployee">
@@ -79,14 +97,11 @@ function Employee({employee}) {
                             <FaUserCheck style={{color:"#00695C", display:`${display.save}`}} size="20px" className="option"  onClick={
                                 () => {
                                     setUpdate(false)
-                                    console.log('Guardar');
-                                    
                             }}/>
                         </button>
                     </div>
                     <FaUserMinus style={{color:"#C62828"}} size="20px" className="option"  onClick={() =>{
-                        //TODO: Crear la función eliminar empleado.
-                        console.log('Eliminar');
+                        dispatch(dismissEmployee(rut, employee.id))
                     }}/>
             </div>
         </form>

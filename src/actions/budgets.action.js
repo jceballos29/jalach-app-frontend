@@ -1,4 +1,4 @@
-import { budgetsByCategories, totalCost, totalSales } from "../services/inventoryFunctions"
+import { budgetsByCategories, totalCost, totalSales } from "../utils/inventoryFunctions"
 
 export const calculateTotalCost = (products) => (dispatch) => {
     const result = totalCost(products);
@@ -23,5 +23,11 @@ export const calculateBudgestCategories = (categories, products) => (dispatch) =
     dispatch({
         type: 'BUDGETS_CATEGORIES',
         payload: {budgetsCategories: result}
+    });
+}
+
+export const logoutBudgets = (dispatch) => {
+    dispatch({
+        type: 'LOGOUT',
     });
 }

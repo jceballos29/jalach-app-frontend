@@ -16,7 +16,7 @@ function CategoryRegister({path}) {
 
     const { register, handleSubmit, reset} = useForm();
     const onSubmit = data => {
-        data = Object.assign({business_rut: company.rut}, data)
+        data["business_rut"] = company.rut
         dispatch(addCategory(company.rut,data));
         reset();
     }
