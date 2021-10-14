@@ -15,6 +15,7 @@ import { getCategories, logoutCategories } from '../actions/category.actions';
 import { getCompanyProducts, logoutProducts } from '../actions/product.actions';
 import { calculateBudgestCategories, calculateSales, calculateTotalCost } from '../actions/budgets.action';
 import { getEmployeesOfCompany, logoutEmployees } from '../actions/employee.action';
+import { calculateEmployeesSalary, logoutPayroll, payrollExpensesByRoles } from '../actions/payroll.action';
 
 const date = new Date();
 
@@ -22,7 +23,8 @@ function Admin() {
 
     const dispatch = useDispatch();
     const { company } = useSelector((state) => state.auth);
-    // const { roles } = useSelector((state) => state.roles);
+    const { roles } = useSelector((state) => state.roles);
+    const { employees } = useSelector((state) => state.employees);
     const { categories } = useSelector((state) => state.categories);
     const { products } = useSelector((state) => state.products); 
     
@@ -32,6 +34,13 @@ function Admin() {
         minutes: date.getMinutes(),
         seconds: date.getSeconds(),
     });
+
+    useEffect(() => {
+        if(employees && roles){
+            dispatch(calculateEmployeesSalary(roles, employees));
+            dispatch(payrollExpensesByRoles(roles, employees));
+        }
+    }, [employees, roles, dispatch])
 
     useEffect(() => {
         if(products && categories){
@@ -119,6 +128,7 @@ function Admin() {
                         dispatch(logoutCategories());
                         dispatch(logoutProducts());
                         dispatch(logoutEmployees());
+                        dispatch(logoutPayroll());
                     }}>Cerrar Sesión</button>
                 </div>
                 

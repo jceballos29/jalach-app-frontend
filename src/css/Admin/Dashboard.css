@@ -166,10 +166,193 @@
       height: 90%; 
       margin-top: 15px;
     }
-    .payrollInfo { grid-area: payrollInfo; }
-    .abstractGraph { grid-area: abstractGraph; }
-    .payrollGraph { grid-area: payrollGraph; }
-    .inventoryGraph { grid-area: inventoryGraph; 
+    .payrollInfo { 
+      grid-area: payrollInfo; 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      grid-template-rows: 0.4fr 1.4fr; 
+      gap: 5px 5px;
+      grid-template-areas: 
+        "PIHeaders"
+        "PIBody"; 
+    }
+    
+    .PIHeaders {
+      grid-area: PIHeaders;
+      width: 100%;
+      height: 100%;
+      justify-self: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      color: #263238;
+      background-color: #E57373 ;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+    
+    .PIBody {
+      grid-area: PIBody;
+      width: 100%;
+      height: 100%;
+      display: grid; 
+      grid-template-columns: 1fr; 
+      grid-template-rows: repeat(6, 1fr); 
+      gap: 0px 0px; 
+      padding: 0px 10px;
+      overflow-y: auto;
+    }
+
+    .PIBody::-webkit-scrollbar {
+      -webkit-appearance: none;
+  }
+  
+  .PIBody::-webkit-scrollbar:vertical {
+      width:10px;
+  }
+  
+  .PIBody::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+      display: none;
+  } 
+  
+  
+  .PIBody::-webkit-scrollbar:horizontal {
+      height: 10px;
+  }
+  
+  .PIBody::-webkit-scrollbar-thumb {
+      background-color: #797979;
+      border-radius: 20px;
+      border: 2px solid #f1f2f3;
+  }
+  
+  .PIBody::-webkit-scrollbar-track {
+      border-radius: 10px;  
+  }
+
+    
+    .PIitem{
+      display: grid; 
+      grid-template-columns: 1fr 1fr 1fr 1fr; 
+      grid-template-rows: 1fr; 
+      align-items: center;
+      justify-items: center;
+      margin: 3px 0px;
+      border-radius: 3px;
+    }
+
+
+
+    .abstractGraph { 
+      grid-area: abstractGraph; 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      grid-template-rows: 0.4fr 1.4fr; 
+      gap: 5px 5px;
+      grid-template-areas: 
+        "AGHeaders"
+        "AGBody";
+    }
+
+    .AGHeaders{
+      grid-area: AGHeaders;
+      width: 100%;
+      height: 100%;
+      justify-self: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 16px;
+      color: #263238;
+      background-color: #E57373 ;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .AGBody {
+      grid-area: AGBody;
+    }
+    
+    .payrollGraph { 
+      grid-area: payrollGraph; 
+      display: grid; 
+      grid-template-columns: 1fr; 
+      grid-template-rows: 0.5fr 1.5fr; 
+      gap: 0px 0px; 
+      grid-template-areas: 
+        "PGHeader"
+        "PGBody"; 
+      width: 355px; 
+      height: 126px; 
+    }
+
+    .PGHeader {
+      grid-area: PGHeader;
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      grid-template-rows: 1fr; 
+      gap: 0px 0px; 
+      color: #263238;
+      background-color: #E57373 ;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      padding: 0px 5%;
+      align-items: center;
+      justify-items: center;
+      font-weight: bold;
+    }
+
+    .PGBody {
+      grid-area: PGBody;
+      width: 100%;
+      height: 100%;
+      display: grid; 
+      grid-template-columns: 1fr; 
+      grid-template-rows: repeat(5, 1fr); 
+      gap: 0px 0px; 
+      padding: 0px 10px;
+      overflow-y: auto;
+    }
+
+    .PGBody::-webkit-scrollbar {
+      -webkit-appearance: none;
+  }
+  
+  .PGBody::-webkit-scrollbar:vertical {
+      width:10px;
+  }
+  
+  .PGBody::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+      display: none;
+  } 
+  
+  
+  .PGBody::-webkit-scrollbar:horizontal {
+      height: 10px;
+  }
+  
+  .PGBody::-webkit-scrollbar-thumb {
+      background-color: #797979;
+      border-radius: 20px;
+      border: 2px solid #f1f2f3;
+  }
+  
+  .PGBody::-webkit-scrollbar-track {
+      border-radius: 10px;  
+  }
+
+
+    .PGitem {
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      grid-template-rows: 1fr; 
+      align-items: center;
+      justify-items: center;
+    }
+
+    .inventoryGraph { 
+      grid-area: inventoryGraph; 
       display: grid; 
       grid-template-columns: 1fr; 
       grid-template-rows: 0.5fr 1.5fr; 
@@ -200,14 +383,13 @@
     .IGBody {
       display: grid; 
       grid-template-columns: 1fr; 
-      grid-template-rows: 1fr 1fr 1fr; 
+      grid-template-rows: 1fr 1fr 1fr 1fr; 
       gap: 0px 0px; 
       justify-self: center; 
       grid-area: IGBody; 
       width: 90%; 
       overflow-y: auto;
     }
-
 
 
     .IGBody::-webkit-scrollbar {
@@ -251,12 +433,11 @@
       grid-area: companyInfo; 
       display: grid; 
       grid-template-columns: 1fr; 
-      grid-template-rows: 0.6fr 2fr 0.4fr; 
+      grid-template-rows: 0.4fr 1.6fr; 
       gap: 5px 5px; 
       grid-template-areas: 
         "companyName"
-        "companyBody"
-        "companyButton"; 
+        "companyBody"; 
         
 
     }
@@ -279,6 +460,7 @@
       grid-template-columns: 1fr 1fr; 
       grid-template-rows: 1fr; 
       gap: 0px 0px; 
+      padding: 10px 0px;
       grid-template-areas: 
         "headers content"; 
       grid-area: companyBody; 

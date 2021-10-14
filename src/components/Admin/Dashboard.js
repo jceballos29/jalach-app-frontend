@@ -6,11 +6,17 @@ import { useSelector } from 'react-redux';
 const weekdays = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
 const months = ['ENE', 'FEB', 'MAR', 'ABR', 'MAY', 'JUN', 'JUL', 'AGO', 'SEP', 'OCT', 'NOV', 'DIc'];
 const date = new Date();
+
 function Dashboard({dateTime}) {
 
     const { company } = useSelector((state) => state.auth);
+    const { roles } = useSelector((state) => state.roles);
     const { budgetsCategories } = useSelector((state) => state.budgets);
+    const { employeesPayroll } = useSelector(state => state.payroll);
+    const { expensesRoles } = useSelector(state => state.payroll);
     const [BCList, setBCList] = useState();
+    const [PIList, setPIList] = useState();
+    const [PGList, setPGList] = useState();
 
 
     let hourStandard = dateTime.hours > 12 ? dateTime.hours - 12 : dateTime.hours
@@ -23,13 +29,45 @@ function Dashboard({dateTime}) {
     useEffect(() => {
         if(budgetsCategories){
             setBCList(budgetsCategories.map(item =>( 
-            <div className='IGItem'>
-                <span>{item.category}</span>
+            <div key={item.category} className='IGItem'>
+                <b>{item.category}</b>
                 <span>{item.totalCost}</span>
                 <span>{item.sales}</span>
             </div>)));
         }
     }, [budgetsCategories])
+
+    useEffect(() => {
+        if(expensesRoles){
+            setPGList(
+                expensesRoles.map( element => (
+                    <div key={element.role} className='PGitem'>
+                        <b>{element.role}</b>
+                        <span>$ {element.expense}</span>
+                    </div>
+                ))
+            );
+        }
+    }, [expensesRoles])
+
+    useEffect(() => {
+        if(employeesPayroll){
+            setPIList(
+                employeesPayroll.map(element => {
+
+                    const role = roles.find( role => role.id === element.role_id)
+                    return (
+                        <div key={element.employee} className='PIitem' style={{backgroundColor: `${role.color}`}}>
+                            <b>{element.employee}</b>
+                            <span>{element.hours}</span>
+                            <span>{element.hourly}</span>
+                            <span>$ {element.weeklySalary}</span>
+                        </div>
+                    )
+                })
+            );
+        }
+    }, [employeesPayroll, roles])
 
     useEffect(() => {
         setWeekday(date.getDay())
@@ -71,7 +109,15 @@ function Dashboard({dateTime}) {
             </div>
             <div className="DashboardContent">  
                 <div className="dashboardContainer">
-                    <div className="payrollInfo box"></div>
+                    <div className="payrollInfo box">
+                        <div className='PIHeaders'>
+                            <h1>Nómina</h1>
+                        </div>
+                        <div className='PIBody'>
+                            {PIList}
+                        </div>
+                    </div>
+
                     <div className="companyInfo box">
                         <div className='companyName'>
                             <h1>{company.business_name}</h1>
@@ -96,12 +142,25 @@ function Dashboard({dateTime}) {
                                 <p>{company.closing_time}</p>
                             </div>
                         </div>
-                        <div className='companyButton'>
-                            <button>Editar</button>
+                    {/* TODO: Agregar función para editar información de la empresa */}
+                    </div>
+                    <div className="abstractGraph box">
+                        <div className='AGHeaders'>
+                            <h1>Resumen</h1>
+                        </div>
+                        <div className='AGBody' ></div>
+                    </div>
+
+                    <div className="payrollGraph box">
+                        <div className='PGHeader'>
+                            <span>Rol</span>
+                            <span>Gasto</span>
+                        </div>
+                        <div className='PGBody'>
+                            {PGList}
                         </div>
                     </div>
-                    <div className="abstractGraph box"></div>
-                    <div className="payrollGraph box"></div>
+
                     <div className="inventoryGraph box">
                         <div className='IGHeader'>
                             <span>Categoría</span>

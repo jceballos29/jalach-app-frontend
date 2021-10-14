@@ -31,7 +31,14 @@ export const registerCompany = (company) => async (dispatch) => {
 export const loginCompany = (data) => async (dispatch) => {
     try {
         let result = await AuthService.login(data);
-        
+        console.log(result === '');
+        if(!result === ''){
+            dispatch({
+                type: LOGIN_FAIL,
+            });
+    
+            return Promise.reject();
+        }
         dispatch({
             type: LOGIN_SUCCESS,
             payload: {company: result}

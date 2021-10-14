@@ -50,6 +50,9 @@ function Payroll() {
                     <button onClick={() => {
                         setShowAddEmployee(true)
                     }}>Agreagar Empleado</button>
+                    {/* <button onClick={() => {
+                        console.log('Role');
+                    }}>Agregar Rol</button> */}
                 </div>
             </div>
         <AddEmployee showAddEmployee={showAddEmployee} handleShow={handleShow} rut={company.rut}/>

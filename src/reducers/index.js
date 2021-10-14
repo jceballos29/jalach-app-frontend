@@ -5,6 +5,7 @@ import categories from './categories.reducer';
 import products from './products.reducer'
 import budgets from './budgets.reducer'
 import employees from './employess.reducer'
+import payroll from './payroll.reducer'
 
 
 export default combineReducers({
@@ -13,5 +14,6 @@ export default combineReducers({
   categories,
   products,
   budgets,
-  employees
+  employees,
+  payroll
 });

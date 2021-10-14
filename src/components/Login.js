@@ -7,21 +7,25 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginCompany } from '../actions/auth.action'
 import { Redirect } from 'react-router-dom';
+// import { useHistory } from 'react-router-dom';
 
 
 function Login() {
 
     const dispatch = useDispatch();
+    // const history = useHistory();
     const { isLoggedIn } = useSelector((state) => state.auth);
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
         try {
             dispatch(loginCompany(data))
-   
             reset();
+            window.location.reload();
+            // history.push("/company")
+
         } catch (error) {
-            
+            throw error
         }
     }
 

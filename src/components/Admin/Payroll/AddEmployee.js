@@ -75,6 +75,7 @@ function AddEmployee({showAddEmployee, handleShow, rut}) {
                         <button onClick={() => {
                             setShow(false);
                             handleShow(false);
+                            reset();
                             }}>Cerrar</button>
                     </div>
                 </div>                

@@ -33,39 +33,39 @@ function ProductRegister({path}) {
     return (
 
             <form onSubmit={handleSubmit(onSubmit)} className="ProductRegister">
-            <h3 className="title">Registro de Producto</h3>
+                <h3 className="title">Registro de Producto</h3>
 
-            <div className="code">
-                <input type="number" placeholder="Código" {...register("code", {required: true})} />            
-            </div>
-            <div className="name">
-                <input type="text" placeholder="Nombre" {...register("name", {required: true})} />
-            </div>    
-            <div className="amount">
-                <input type="number" placeholder="Cantidad" min={1} defaultValue={1} {...register("stock", {required: true})} />
-            </div>
-            <div className="category">
-                <select {...register("category_code", { required: true })}>
-                    {categorieList}
-                </select>
-            </div>
-            <div className="cost">
-                <input type="number" placeholder="Costo" {...register("cost", {required: true})} />
-            </div>
-            <div className="price">
-                <input type="number" placeholder="Precio" {...register("price", {required: true})} />
-            </div>
+                <div className="code">
+                    <input type="number" placeholder="Código" {...register("code", {required: true})} />            
+                </div>
+                <div className="name">
+                    <input type="text" placeholder="Nombre" {...register("name", {required: true})} />
+                </div>    
+                <div className="amount">
+                    <input type="number" placeholder="Cantidad" min={1} defaultValue={1} {...register("stock", {required: true})} />
+                </div>
+                <div className="category">
+                    <select {...register("category_code", { required: true })}>
+                        {categorieList}
+                    </select>
+                </div>
+                <div className="cost">
+                    <input type="number" placeholder="Costo" {...register("cost", {required: true})} />
+                </div>
+                <div className="price">
+                    <input type="number" placeholder="Precio" {...register("price", {required: true})} />
+                </div>
 
-            <div className="addProduct">
-                <input type="submit" value="Agregar"/>    
-            </div>    
-            <div className='cancel'>
-                <button onClick={()=>{
-                    reset();
-                    history.push(`${path}`);
-                }}>Cancelar</button>
-            </div>
-        </form>
+                <div className="addProduct">
+                    <input type="submit" value="Agregar"/>    
+                </div>    
+                <div className='cancel'>
+                    <button onClick={()=>{
+                        reset();
+                        history.push(`${path}`);
+                    }}>Cancelar</button>
+                </div>
+            </form>
 
     )
 }
