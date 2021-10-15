@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function AddRole() {
-    return (
-        <div>
-            
-        </div>
-    )
+    return <div></div>;
 }
 
-export default AddRole
+export default AddRole;

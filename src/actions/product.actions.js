@@ -1,11 +1,6 @@
-import {
-    PRODUCT_SUCCESS,
-    PRODUCT_FAIL,
-    LOGOUT
+import { PRODUCT_SUCCESS, PRODUCT_FAIL, LOGOUT } from "./types.js";
 
-} from './types.js';
-
-import ProductService from '../services/product.service.js';
+import ProductService from "../services/product.service.js";
 
 export const getCompanyProducts = (rut) => async (dispatch) => {
     try {
@@ -13,18 +8,17 @@ export const getCompanyProducts = (rut) => async (dispatch) => {
 
         dispatch({
             type: PRODUCT_SUCCESS,
-            payload: {products: result}
+            payload: { products: result },
         });
         return Promise.resolve();
-
     } catch (error) {
         dispatch({
-            type: PRODUCT_FAIL
+            type: PRODUCT_FAIL,
         });
 
         return Promise.reject();
     }
-}
+};
 
 export const registerProduct = (rut, data) => async (dispatch) => {
     try {
@@ -32,39 +26,36 @@ export const registerProduct = (rut, data) => async (dispatch) => {
         let result = await ProductService.getProducts(rut);
         dispatch({
             type: PRODUCT_SUCCESS,
-            payload: {products: result}
+            payload: { products: result },
         });
         return Promise.resolve();
-
     } catch (error) {
         dispatch({
-            type: PRODUCT_FAIL
+            type: PRODUCT_FAIL,
         });
 
         return Promise.reject();
     }
-}
-
+};
 
 export const updateProduct = (rut, data) => async (dispatch) => {
     try {
-        const {code} = data;
+        const { code } = data;
         await ProductService.updateProduct(code, data);
         let result = await ProductService.getProducts(rut);
         dispatch({
             type: PRODUCT_SUCCESS,
-            payload: {products: result}
+            payload: { products: result },
         });
         return Promise.resolve();
-
     } catch (error) {
         dispatch({
-            type: PRODUCT_FAIL
+            type: PRODUCT_FAIL,
         });
 
         return Promise.reject();
     }
-}
+};
 
 export const deleteProduct = (rut, code) => async (dispatch) => {
     try {
@@ -72,22 +63,20 @@ export const deleteProduct = (rut, code) => async (dispatch) => {
         let result = await ProductService.getProducts(rut);
         dispatch({
             type: PRODUCT_SUCCESS,
-            payload: {products: result}
+            payload: { products: result },
         });
         return Promise.resolve();
-
     } catch (error) {
         dispatch({
-            type: PRODUCT_FAIL
+            type: PRODUCT_FAIL,
         });
 
         return Promise.reject();
     }
-}
+};
 
 export const logoutProducts = () => (dispatch) => {
-
     dispatch({
         type: LOGOUT,
     });
-}
+};

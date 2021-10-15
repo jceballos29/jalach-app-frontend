@@ -1,38 +1,38 @@
-import axios from 'axios';
+import axios from "axios";
 
 const API_URL = "http://localhost:9000/api/v1";
 
-const getRolesofCompany = async(rut) => {
+const getRolesofCompany = async (rut) => {
     const response = await axios({
-        method: 'GET',
+        method: "GET",
         baseURL: API_URL,
-        url: `/roles/${rut}`
+        url: `/roles/${rut}`,
     });
 
     return response.data;
-}
+};
 
 const addRole = async (data) => {
     return await axios({
-        method: 'POST',
+        method: "POST",
         baseURL: API_URL,
         url: "/roles",
-        data: data
-    })
-}
+        data: data,
+    });
+};
 
-const deleteRole = async(id) => {
+const deleteRole = async (id) => {
     return await axios({
-        method: 'DELETE',
+        method: "DELETE",
         baseURL: API_URL,
-        url: `/roles/${id}`
-    })
-}
+        url: `/roles/${id}`,
+    });
+};
 
 const RoleService = {
     getRolesofCompany,
     addRole,
-    deleteRole
-}
+    deleteRole,
+};
 
 export default RoleService;

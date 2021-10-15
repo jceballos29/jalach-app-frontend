@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Staatliches&display=swap");
 
 .Register {
     width: 900px;
@@ -10,14 +10,13 @@
     align-items: center;
 }
 
-
-
- .registerBanner {
+.registerBanner {
     width: 45%;
     height: 100%;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    background-image: linear-gradient(10deg, #2b2d42a3 0%, #2b2d429f 100%), url("../img/pexels-guilherme-rossi-1819669.jpg");
+    background-image: linear-gradient(10deg, #2b2d42a3 0%, #2b2d429f 100%),
+        url("../img/pexels-guilherme-rossi-1819669.jpg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: flex;
@@ -26,15 +25,15 @@
 }
 
 .registerBanner h1 {
-    font-family: 'Staatliches', cursive;
-    color: #B40421;
+    font-family: "Staatliches", cursive;
+    color: #b40421;
     font-size: 112px;
     letter-spacing: 10px;
     margin: 0px 40px;
 }
 
 .registerBanner p {
-    color: #F5F3F4;
+    color: #f5f3f4;
     font-size: 36px;
     margin: 0px 40px 40px 40px;
 }
@@ -44,7 +43,7 @@
     height: 100%;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    background-color: #EDF2F4;
+    background-color: #edf2f4;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -57,7 +56,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
 }
 
 .registerContainer h2 {
@@ -90,16 +88,15 @@
     background: none;
     border-bottom: 1px solid;
     outline: none;
-
 }
 
-.registerContainer input[type="submit"]{
+.registerContainer input[type="submit"] {
     width: 350px;
     height: 40px;
     text-transform: uppercase;
     font-weight: bold;
     cursor: pointer;
-    background-color: #E5383B;
+    background-color: #e5383b;
     border-radius: 5px;
     border: none;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.6);
@@ -112,20 +109,18 @@
 
 .registerContainer input[type="submit"]:hover {
     background-color: #cc3134;
-} 
+}
 
 .registerContainer input[type="submit"]:active {
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.6) inset;
-
 }
-
 
 .formGroup {
     width: 90%;
     padding: 10px;
 }
 
-.inputGroup{
+.inputGroup {
     display: flex;
     flex-direction: column;
     justify-content: center;

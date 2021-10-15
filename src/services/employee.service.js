@@ -1,64 +1,62 @@
-import axios from 'axios';
+import axios from "axios";
 
 const API_URL = "http://localhost:9000/api/v1";
 
 const getEmployeesOfCompany = async (rut) => {
     const response = await axios({
-        method: 'GET',
+        method: "GET",
         baseURL: API_URL,
-        url: `/employees/company/${rut}`
+        url: `/employees/company/${rut}`,
     });
 
     return response.data;
-}
+};
 
 const getEmployeesByRole = async (role) => {
     const response = await axios({
-        method: 'GET',
+        method: "GET",
         baseURL: API_URL,
-        url: `/employees/roles/${role}`
+        url: `/employees/roles/${role}`,
     });
 
     return response.data;
-}
+};
 
 const getEmployeeById = async (id) => {
     const response = await axios({
-        method: 'GET',
+        method: "GET",
         baseURL: API_URL,
-        url: `/employees/${id}`
+        url: `/employees/${id}`,
     });
 
     return response.data;
-}
+};
 
 const hireEmployee = async (data) => {
     return await axios({
-        method: 'POST',
+        method: "POST",
         baseURL: API_URL,
         url: `/employees`,
-        data: data
+        data: data,
     });
-}
+};
 
 const updateEmployee = async (id, data) => {
     return await axios({
-        method: 'PUT',
+        method: "PUT",
         baseURL: API_URL,
         url: `/employees/${id}`,
-        data: data
+        data: data,
     });
-}
-
+};
 
 const dismissEmployee = async (id) => {
     return await axios({
-        method: 'DELETE',
+        method: "DELETE",
         baseURL: API_URL,
-        url: `/employees/${id}`
+        url: `/employees/${id}`,
     });
-}
-
+};
 
 const EmployeeService = {
     getEmployeeById,
@@ -66,7 +64,7 @@ const EmployeeService = {
     getEmployeesOfCompany,
     hireEmployee,
     updateEmployee,
-    dismissEmployee
-}
+    dismissEmployee,
+};
 
 export default EmployeeService;

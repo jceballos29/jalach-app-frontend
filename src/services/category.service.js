@@ -1,40 +1,38 @@
-import axios from 'axios';
+import axios from "axios";
 
 const API_URL = "http://localhost:9000/api/v1";
 
-const getCategoryOfCompany = async(rut) => {
+const getCategoryOfCompany = async (rut) => {
     const response = await axios({
-        method: 'GET',
+        method: "GET",
         baseURL: API_URL,
-        url: `/category/${rut}`
+        url: `/category/${rut}`,
     });
 
     return response.data;
-}
+};
 
 const addCategory = async (data) => {
     return await axios({
-        method: 'POST',
+        method: "POST",
         baseURL: API_URL,
         url: "/category",
-        data: data
-    })
-}
+        data: data,
+    });
+};
 
-const deleteCategory = async(id) => {
+const deleteCategory = async (id) => {
     return await axios({
-        method: 'DELETE',
+        method: "DELETE",
         baseURL: API_URL,
-        url: `/category/${id}`
-    })
-}
-
-
+        url: `/category/${id}`,
+    });
+};
 
 const CategoryService = {
     getCategoryOfCompany,
     addCategory,
-    deleteCategory
-}
+    deleteCategory,
+};
 
 export default CategoryService;

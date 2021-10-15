@@ -1,4 +1,4 @@
-.AddEmployee{
+.AddEmployee {
     width: 800px;
     height: 750px;
     position: absolute;
@@ -12,7 +12,7 @@
 .addForm {
     width: 60%;
     height: 80%;
-    background-color: #F5F3F4;
+    background-color: #f5f3f4;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.7);
     border-radius: 30px;
     display: flex;
@@ -47,7 +47,7 @@
     justify-content: center;
     padding: 15px 5px 5px 20px;
     border-radius: 20px;
-    background-color:#B0BEC5;
+    background-color: #b0bec5;
 }
 
 .FormGruop {
@@ -56,14 +56,14 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-
 }
 
 .FormGruop h3 {
     text-align: left;
 }
 
-.FormGruop input, .FormGruop select {
+.FormGruop input,
+.FormGruop select {
     width: 280px;
     height: 25px;
     margin: 5px;
@@ -71,7 +71,7 @@
     align-self: center;
     border: none;
     outline: none;
-    background-color: #FAFAFA;
+    background-color: #fafafa;
     border-radius: 2px;
 }
 
@@ -83,21 +83,20 @@
     justify-content: center;
 }
 
-
 .addEmployeeButtons button {
     width: 100px;
     height: 30px;
     margin: 5px;
     font-weight: bold;
-    background-color: #FFCDD2;
+    background-color: #ffcdd2;
     border: none;
     border-radius: 5px;
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
     cursor: pointer;
 }
 
-.addEmployeeButtons button:hover{
-    background-color: #EF9A9A;
+.addEmployeeButtons button:hover {
+    background-color: #ef9a9a;
 }
 .addEmployeeButtons button:active {
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.5) inset;

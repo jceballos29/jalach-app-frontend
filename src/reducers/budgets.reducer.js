@@ -1,43 +1,42 @@
-
 const initialState = {
     totalCost: 0,
     sales: 0,
-    budgetsCategories: null
-}
+    budgetsCategories: null,
+};
 
 const budgetsReducer = (state = initialState, action) => {
-    const {type, payload} = action;
+    const { type, payload } = action;
 
     switch (type) {
-        case 'TOTAL_COST':
+        case "TOTAL_COST":
             return {
                 ...state,
-                totalCost: payload.cost
-            }
-    
-        case 'TOTAL_SALES': 
-            return {
-                ...state,
-                sales: payload.sales
-            }
+                totalCost: payload.cost,
+            };
 
-        case 'BUDGETS_CATEGORIES':
+        case "TOTAL_SALES":
             return {
                 ...state,
-                budgetsCategories: payload.budgetsCategories
-            }
+                sales: payload.sales,
+            };
 
-        case 'LOGOUT':
+        case "BUDGETS_CATEGORIES":
+            return {
+                ...state,
+                budgetsCategories: payload.budgetsCategories,
+            };
+
+        case "LOGOUT":
             return {
                 ...state,
                 totalCost: 0,
                 sales: 0,
-                budgetsCategories: null
-            }
+                budgetsCategories: null,
+            };
 
         default:
             return state;
     }
-}
+};
 
 export default budgetsReducer;

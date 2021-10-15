@@ -7,29 +7,29 @@ import {
     SET_BUSINESS_HOURS_SUCCESS,
     SET_BUSINESS_HOURS_FAIL,
     NOT_FIRST_TIME_SUCCESS,
-    NOT_FIRST_TIME_FAIL
-} from '../actions/types.js'
+    NOT_FIRST_TIME_FAIL,
+} from "../actions/types.js";
 
 const company = JSON.parse(localStorage.getItem("company"));
 
-const initialState = company 
-    ? {isLoggedIn: true, company} 
-    : {isLoggedIn: false, company: null};
+const initialState = company
+    ? { isLoggedIn: true, company }
+    : { isLoggedIn: false, company: null };
 
 const authReducer = (state = initialState, action) => {
-    const {type, payload} = action;
+    const { type, payload } = action;
 
     switch (type) {
         case REGISTER_SUCCESS:
             return {
                 ...state,
-                isLoggedIn: false
+                isLoggedIn: false,
             };
 
         case REGISTER_FAIL:
             return {
                 ...state,
-                isLoggedIn: false
+                isLoggedIn: false,
             };
         case LOGIN_SUCCESS:
             return {
@@ -52,24 +52,24 @@ const authReducer = (state = initialState, action) => {
         case SET_BUSINESS_HOURS_SUCCESS:
             return {
                 ...state,
-                company: payload.company
-            }
+                company: payload.company,
+            };
         case SET_BUSINESS_HOURS_FAIL:
             return {
-                ...state
-            }
+                ...state,
+            };
         case NOT_FIRST_TIME_SUCCESS:
             return {
                 ...state,
-                company: payload.company
-            }
+                company: payload.company,
+            };
         case NOT_FIRST_TIME_FAIL:
             return {
-                ...state
-            }
+                ...state,
+            };
         default:
-            return state
+            return state;
     }
-}
+};
 
-export default authReducer
+export default authReducer;

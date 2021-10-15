@@ -1,10 +1,6 @@
-import {
-    EMPLOYEE_SUCCESS,
-    EMPLOYEE_FAIL,
-    LOGOUT
-} from './types'
+import { EMPLOYEE_SUCCESS, EMPLOYEE_FAIL, LOGOUT } from "./types";
 
-import EmployeeService from '../services/employee.service'
+import EmployeeService from "../services/employee.service";
 
 export const getEmployeesOfCompany = (rut) => async (dispatch) => {
     try {
@@ -12,52 +8,51 @@ export const getEmployeesOfCompany = (rut) => async (dispatch) => {
 
         dispatch({
             type: EMPLOYEE_SUCCESS,
-            payload: {employees: result}
+            payload: { employees: result },
         });
         return Promise.resolve();
     } catch (error) {
         dispatch({
-            type: EMPLOYEE_FAIL
+            type: EMPLOYEE_FAIL,
         });
         return Promise.reject();
     }
-}
+};
 
-export const hireEmployee  = (rut, data) => async (dispatch) => {
+export const hireEmployee = (rut, data) => async (dispatch) => {
     try {
-        await EmployeeService.hireEmployee(data)
+        await EmployeeService.hireEmployee(data);
         let result = await EmployeeService.getEmployeesOfCompany(rut);
         dispatch({
             type: EMPLOYEE_SUCCESS,
-            payload: {employees: result}
+            payload: { employees: result },
         });
         return Promise.resolve();
     } catch (error) {
         dispatch({
-            type: EMPLOYEE_FAIL
+            type: EMPLOYEE_FAIL,
         });
         return Promise.reject();
     }
-} 
+};
 
-
-export const updateEmployee = (rut, id, data) => async (dispatch) =>{
+export const updateEmployee = (rut, id, data) => async (dispatch) => {
     try {
-        await EmployeeService.updateEmployee(id, data)
+        await EmployeeService.updateEmployee(id, data);
         let result = await EmployeeService.getEmployeesOfCompany(rut);
 
         dispatch({
             type: EMPLOYEE_SUCCESS,
-            payload: {employees: result}
+            payload: { employees: result },
         });
         return Promise.resolve();
     } catch (error) {
         dispatch({
-            type: EMPLOYEE_FAIL
+            type: EMPLOYEE_FAIL,
         });
         return Promise.reject();
     }
-}
+};
 
 export const dismissEmployee = (rut, id) => async (dispatch) => {
     try {
@@ -66,20 +61,19 @@ export const dismissEmployee = (rut, id) => async (dispatch) => {
 
         dispatch({
             type: EMPLOYEE_SUCCESS,
-            payload: {employees: result}
+            payload: { employees: result },
         });
         return Promise.resolve();
     } catch (error) {
         dispatch({
-            type: EMPLOYEE_FAIL
+            type: EMPLOYEE_FAIL,
         });
         return Promise.reject();
     }
-}
+};
 
 export const logoutEmployees = () => (dispatch) => {
-
     dispatch({
         type: LOGOUT,
     });
-}
+};
